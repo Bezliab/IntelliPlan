@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #F7F4EF;
+  --bg2: #EEE9E0;
+  --surface: #FFFFFF;
+  --surface2: #F2EEE7;
+  --border: rgba(0,0,0,0.08);
+  --border-strong: rgba(0,0,0,0.14);
+  --text: #1C1A16;
+  --text2: #6B6356;
+  --text3: #9A9186;
+  --accent: #1B6B6B;
+  --accent-light: #E8F4F4;
+  --accent2: #C8622A;
+  --accent2-light: #FDF0E8;
+  --gold: #B8960C;
+  --gold-light: #FDF8E4;
+  --green: #2E7A4F;
+  --green-light: #E8F5EE;
+  --red: #C0392B;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Nunito', sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg: #12110E;
+  --bg2: #1A1814;
+  --surface: #201E19;
+  --surface2: #2A2720;
+  --border: rgba(255,255,255,0.07);
+  --border-strong: rgba(255,255,255,0.12);
+  --text: #F0EDE6;
+  --text2: #A09880;
+  --text3: #6A6050;
+  --accent: #4DB8B8;
+  --accent-light: #0E2828;
+  --accent2: #E07840;
+  --accent2-light: #2A1A0E;
+  --gold: #D4AE2A;
+  --gold-light: #1E1A06;
+  --green: #4CAF7A;
+  --green-light: #0E2018;
+  --red: #E05050;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
+  --shadow: 0 4px 20px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 10px; }
+
+input, select, textarea, button { font-family: var(--font-body); outline: none; }
+
+input[type="text"], input[type="number"], input[type="date"],
+input[type="time"], select {
+  background: var(--surface2);
+  border: 1.5px solid var(--border-strong);
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+input[type="text"]:focus, input[type="number"]:focus,
+input[type="date"]:focus, input[type="time"]:focus, select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent);
+  background: var(--surface);
+}
+input::placeholder { color: var(--text3); }
+input[type="range"] { accent-color: var(--accent); width: 100%; cursor: pointer; }
+[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.8); }
+select option { background: var(--surface); color: var(--text); }
+
+@keyframes checkPop {
+  0% { transform: scale(0.5); }
+  60% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+.check-pop { animation: checkPop 0.22s ease forwards; }
+
+.focus-hero-bg {
+  background: radial-gradient(ellipse at 50% -10%,
+    color-mix(in srgb, var(--accent) 10%, transparent) 0%,
+    transparent 65%);
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0,0); }
+  10% { transform: translate(-2%,-2%); }
+  30% { transform: translate(2%,2%); }
+  50% { transform: translate(-1%,1%); }
+  70% { transform: translate(1%,-1%); }
+  90% { transform: translate(-2%,2%); }
+}
+
+@media (max-width: 640px) {
+  .hide-sm { display: none !important; }
+}
+@media (min-width: 641px) {
+  .show-sm { display: none !important; }
+}
